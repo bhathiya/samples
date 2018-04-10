@@ -3,7 +3,7 @@ HTTP package provides HTTP, HTTP2 and WebSocket implementations. These implement
 ``` java
 endpoint http:ClientEndpoint clientEndpoint {
    targets: [{
-                 uri: "https://my-simple-backend.com"
+                 url: "https://my-simple-backend.com"
              }]
    };
 ```
