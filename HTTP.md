@@ -11,7 +11,7 @@ endpoint http:ClientEndpoint clientEndpoint {
 The defined client endpoint can be used to call the service.
 
 ``` java
-http:Request req = {};
+http:Request req = new;
 // Send a GET request to the specified endpoint
 var response = clientEndpoint -> get("/get?id=123", req);
 ```
@@ -39,7 +39,7 @@ Then a service can be defined and bind to above Service endpoint.
 service<http:Service> helloWorld bind helloWorldEP {
    @Description {value:"All resources are invoked with arguments of server connector and request"}
    sayHello (endpoint conn, http:Request req) {
-       http:Response res = {};
+       http:Response res = new;
        // A util method that can be used to set string payload.
        res.setStringPayload("Hello, World!");
        // Sends the response back to the client.
