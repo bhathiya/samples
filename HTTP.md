@@ -38,15 +38,22 @@ Then a `Service` can be defined and bind to above `Listener` endpoint.
 @http:ServiceConfig { basePath:"/helloWorld" }
 service helloWorld bind helloWorldEP {
    @Description {value:"All resources are invoked with arguments of server connector and request"}
-   sayHello (endpoint conn, http:Request req) {
+   @http:resourceConfig {
+        methods:["POST"],
+        path:"/{name}",
+        body:"message"
+    }
+   sayHello (endpoint conn, http:Request req, string name, string message) {
        http:Response res = new;
        // A util method that can be used to set string payload.
-       res.setStringPayload("Hello, World!");
+       res.setStringPayload("Hello, World! I’m " + name “. “ + message);
        // Sends the response back to the client.
        _ = conn -> respond(res);
    }
 }
 ```
+
+In resources (e.g. ‘sayHello’ above), `endpoint` and `http:Request` are mandatory parameters while other parameters such as path/query params, payload binding params are optional.  
 
 When a request is received to a `Service`, the best-matched resource is calculated based on a set of predefined criteria and the request is dispatched to the best matching resource. 
 
@@ -69,6 +76,4 @@ See [HTTP Trace Logs Example](https://ballerinalang.org/docs/by-example/http-tra
 `ballerina/http` package provides WebSocket support as well. WebSocket endpoints also have 2 types as `WebSocketClient` and `WebSocketListener`. `WebSocketClient` support callback services and both types of endpoints support ping/pong control frames. 
 
 See [WebSocket Basic Example](https://ballerinalang.org/docs/by-example/websocket-basic-sample), [HTTP to WebSocket Upgrade Example](https://ballerinalang.org/docs/by-example/http-to-websocket-upgrade)
-
-
 
