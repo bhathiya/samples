@@ -36,7 +36,7 @@ Then a `Service` can be defined and bind to above `Listener` endpoint.
 ```java
 @Description {value:"By default Ballerina assumes that the service is to be exposed via HTTP/1.1."}
 @http:ServiceConfig { basePath:"/helloWorld" }
-service<http:Service> helloWorld bind helloWorldEP {
+service helloWorld bind helloWorldEP {
    @Description {value:"All resources are invoked with arguments of server connector and request"}
    sayHello (endpoint conn, http:Request req) {
        http:Response res = new;
