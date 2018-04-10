@@ -53,7 +53,7 @@ service helloWorld bind helloWorldEP {
 }
 ```
 
-In resources (e.g. ‘sayHello’ above), `endpoint` and `http:Request` are mandatory parameters while other parameters such as path/query params, payload binding params are optional.  
+In resources (e.g. ‘sayHello’ above), `endpoint` and `http:Request` are mandatory parameters while `path` params and `body` param are optional.   
 
 When a request is received to a `Service`, the best-matched resource is calculated based on a set of predefined criteria and the request is dispatched to the best matching resource. 
 
