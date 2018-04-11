@@ -2,7 +2,7 @@
 
 ## FTP Client
 
-The `ftp:Client` can be used to connect to an FTP server and perform I/O operations. It supports get, delete, out, append, mkdir, rmdir, rename, size, list operations.
+The `ftp:Client` can be used to connect to an FTP server and perform I/O operations. It supports `get`, `delete`, `put`, `append`, `mkdir`, `rmdir`, `rename`, `size`, `list` operations.
 
 An FTP Client endpoint is defined like this.
 
