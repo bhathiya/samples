@@ -88,7 +88,7 @@ Following configurations are available for `ftp:Listener`.
 
 `path` - The absolute local path from root 
 
-`pollingInterval` -  How often the listener should be checking for the changes in the file system (in milliseconds) [Default: 10000]  
+`pollingInterval` -  How often the listener should be checking for the changes in the file system (in milliseconds) [Default: 1000]  
 
 `sftpIdentities` - Private key for key-based authentication
 
