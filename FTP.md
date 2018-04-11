@@ -4,7 +4,7 @@
 
 The `ftp:Client` can be used to connect to an FTP server and perform file operations. It supports `get`, `delete`, `put`, `append`, `mkdir`, `rmdir`, `rename`, `size`, and `list` operations.
 
-`ftp:Client` endpoint is defined like this.
+An `ftp:Client` endpoint is defined like this.
 
 ```java
 endpoint ftp:Client client {
@@ -62,7 +62,7 @@ The `ftp:Listener` can be used to listen to a remote FTP location. It keeps list
 `lastModifiedTimeStamp` - The timestamp of when the file was created (Number of milliseconds since January 1, 1970, 00:00:00 GMT)
 
 
-`ftp:Listener` endpoint is defined like this. 
+An `ftp:Listener` endpoint is defined like this. 
 
 ```java
 endpoint ftp:Listener remoteFolder {
