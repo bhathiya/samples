@@ -103,7 +103,7 @@ service myRemoteFiles bind remoteFolder {
     fileResource (ftp:FileEvent m) {
 	log:printInfo(m.uri);
 	log:printInfo(m.baseName);
-        	log:printInfo(m.path);
+        log:printInfo(m.path);
     }
 }
 ```
