@@ -72,7 +72,7 @@ endpoint ftp:Listener remoteFolder {
     passPhrase : “password"
     path:"/personal",
     pollingInterval:"2000",
-    sftpIdentities:"/home/gihan/.ssh/id_rsa",
+    sftpIdentities:"/home/john/.ssh/id_rsa",
     sftpIdentityPassPhrase:"",
     sftpUserDirIsRoot:"true"
 };
