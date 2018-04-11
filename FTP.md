@@ -51,14 +51,10 @@ See [Complete FTP Client Example](//BBE link goes here)
 
 The `ftp:Listener` can be used to listen to a remote FTP location. It keeps listening to the specified directory, and an event is fired when a new file is added to the directory. The fired event is the type of `FileEvent` and it consists of following information.
 
-`uri` - Absolute URI of the newly added file
-
-`baseName` - Name of the newly added file
-
-`path` - The new file’s path from root directory
-
-`size` - Size of the newly added file in bytes
-
+`uri` - Absolute URI of the newly added file<br/>
+`baseName` - Name of the newly added file<br/>
+`path` - The new file’s path from root directory<br/>
+`size` - Size of the newly added file in bytes<br/>
 `lastModifiedTimeStamp` - The timestamp of when the file was created (Number of milliseconds since January 1, 1970, 00:00:00 GMT)
 
 
@@ -80,21 +76,15 @@ endpoint ftp:Listener remoteFolder {
 
 Following configurations are available for `ftp:Listener`.
 
-`protocol` - Supports both ftp and sftp 
-
-`host` - SFTP hostname
-
-`username` and `passPhrase` - Credentials for password based authentication
-
-`path` - The absolute local path from root 
-
-`pollingInterval` -  How often the listener should be checking for the changes in the file system (in milliseconds) [Default: 1000]  
-
-`sftpIdentities` - Private key for key-based authentication
-
-`sftpIdentityPassPhrase` - Passphrase for key-based authentication
-
+`protocol` - Supports both ftp and sftp<br/>
+`host` - SFTP hostname<br/>
+`username` and `passPhrase` - Credentials for password based authentication<br/>
+`path` - The absolute local path from root <br/>
+`pollingInterval` -  How often the listener should be checking for the changes in the file system (in milliseconds) [Default: 1000]  <br/>
+`sftpIdentities` - Private key for key-based authentication<br/>
+`sftpIdentityPassPhrase` - Passphrase for key-based authentication<br/>
 `sftpUserDirIsRoot` - True if the user directory should be treated as the root directory. [Default: True]
+
 
 A service can be defined binding to above `ftp:Listener` endpoint.  
 
