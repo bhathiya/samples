@@ -20,17 +20,17 @@ endpoint ftp:Client client {
 
 ```sh
 // Make a directory in remote FTP location
-var error = client -> mkdir("/personal/files");  
+ftp:FTPClientError? dirCreErr client -> mkdir("/personal/files");  
 
 // Put a file to FTP location
 io:ByteChannel bchannel = io:openFile("/home/john/files/MyFile.xml", "r");
-error = client -> put("/personal/files/MyFile.xml", bchannel);
+ftp:FTPClientError? filePutErr = client -> put("/personal/files/MyFile.xml", bchannel);
 
 // List files of FTP location
 var listOrError = client -> list("/personal/files");
 
 // Rename or move a file in FTP location
-error = client -> rename("/personal/files/MyFile.xml", "/personal/New.xml");
+ftp:FTPClientError? renameErr = client -> rename("/personal/files/MyFile.xml", "/personal/New.xml");
 
 // Read the size of a file in FTP location
 var sizeOrError = client -> size("/personal/New.xml");
@@ -39,10 +39,10 @@ var sizeOrError = client -> size("/personal/New.xml");
 var byteChannelOrError = client -> get("/personal/New.xml");
 
 // Delete a file in FTP location
-error = client -> delete("/personal/New.xml");
+ftp:FTPClientError? fileDelErr = client -> delete("/personal/New.xml");
 
 // Delete a directory in FTP location
-error = client -> rmdir("/personal/files");    
+ftp:FTPClientError? dirDelErr = client -> rmdir("/personal/files");    
 ```
 
 See [Complete FTP Client Example](//BBE link goes here)
