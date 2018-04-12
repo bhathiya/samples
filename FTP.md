@@ -6,7 +6,7 @@ The `ftp:Client` can be used to connect to an FTP server and perform file operat
 
 An `ftp:Client` endpoint is defined like this.
 
-```java
+```ballerina
 endpoint ftp:Client client {
     protocol: "sftp",
     host:"ftp.ballerina.com",
@@ -18,7 +18,7 @@ endpoint ftp:Client client {
  It supports ftp and sftp protocols.  In addition to above parameters, optional `port` parameter is also supported. Examples for each operation is below. All operations return `FTPClientError
 ` in case of any error.
 
-```sh
+```ballerina
 // Make a directory in remote FTP location
 ftp:FTPClientError? dirCreErr client -> mkdir("/personal/files");  
 
@@ -60,7 +60,7 @@ The `ftp:Listener` can be used to listen to a remote FTP location. It keeps list
 
 An `ftp:Listener` endpoint is defined like this. 
 
-```java
+```ballerina
 endpoint ftp:Listener remoteFolder {
     protocol:"sftp",
     host:"ftp.ballerina.com",
@@ -88,7 +88,7 @@ Following configurations are available for `ftp:Listener`.
 
 A service can be defined binding to above `ftp:Listener` endpoint.  
 
-```java
+```ballerina
 service myRemoteFiles bind remoteFolder {
     fileResource (ftp:FileEvent m) {
 	log:printInfo(m.uri);
