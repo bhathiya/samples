@@ -1,6 +1,6 @@
 `ballerina/http` package provides HTTP, HTTP2 and WebSocket implementations. These implementations provide 2 types of endpoints which are `Client` endpoints and `Listener` endpoints. `Client` endpoints are used to connect to and interact with HTTP services. A sample `Client` endpoint can be defined like this with the remote service URL it needs to connect with.
 
-``` java
+``` ballerina
 endpoint http:Client clientEndpoint {
    targets: [{
                  url: "https://my-simple-backend.com"
@@ -10,7 +10,7 @@ endpoint http:Client clientEndpoint {
 
 The defined `Client` endpoint can be used to call the remote service.
 
-``` java
+``` ballerina
 http:Request req = new;
 // Send a GET request to the specified endpoint
 var response = clientEndpoint -> get("/get?id=123", req);
@@ -24,7 +24,7 @@ See [Client Endpoint Example](https://ballerinalang.org/docs/by-example/http-cli
 
 A `Service` can be exposed via a `Listener` endpoint, and it represents a collection of network-accessible entry points. A resource represents one such entry point and can have its own path, HTTP methods, body format, 'consumes' content type, 'produces' content type, CORS headers etc. A `Listener` endpoint can be defined like this.
 
-```java
+```ballerina
 @Description {value:"Attributes associated with the `Listener` endpoint is defined here."}
 endpoint http:Listener helloWorldEP {
    port:9090
@@ -33,7 +33,7 @@ endpoint http:Listener helloWorldEP {
 
 Then a `Service` can be defined and bind to above `Listener` endpoint.
 
-```java
+```ballerina
 @Description {value:"By default Ballerina assumes that the service is to be exposed via HTTP/1.1."}
 @http:ServiceConfig { basePath:"/helloWorld" }
 service helloWorld bind helloWorldEP {
