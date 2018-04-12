@@ -11,7 +11,7 @@ The type `Timezone` represents the timezone information associated with a partic
 `zoneOffset` - The offset in seconds
 
 
-## Current time/date
+## Get current time/date
 
 ```ballerina
 time:Time time = time:currentTime(); 
@@ -84,8 +84,9 @@ time:Time time2 = time:parseTo("Wed, 28 Mar 2018 11:56:23 +0530", time:TIME_FORM
 time:Time time1 = time:parse("2017-06-26T09:46:22.444-0500", "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 time1 = time.addDuration(1, 1, 1, 1, 1, 1, 1); // Adds 1 year, 1 month, 1 day, 1 hour, 1 minute, 1 second and 1 millisecond
 
+//Subtract a time duration
 time:Time time2 = time:parse("2016-03-01T09:46:22.444-0500", "yyyy-MM-dd'T'HH:mm:ss.SSSZ");
-time2 = time.subtractDuration(1, 1, 1, 1, 1, 1, 1);  // Substracts 1 year, 1 month, 1 day, 1 hour, 1 minute, 1 second and 1 millisecond
+time2 = time.subtractDuration(1, 1, 1, 1, 1, 1, 1);  // Subtracts 1 year, 1 month, 1 day, 1 hour, 1 minute, 1 second and 1 millisecond
 
 //Get duration between 2 time values
 int diffInMillis = time1.time - time2.time;
