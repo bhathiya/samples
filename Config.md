@@ -22,7 +22,7 @@ ballerina run my-program.bal --config /path/to/conf/file/custom-config-file-name
 
 A sample config file looks as follows. Content should be in the TOML format. Note the structure where multiple configs can be grouped under one config, which is inside square brackets. 
 
-```toml
+```
  username.instances=john,peter
  [john]
  access.rights=RW
