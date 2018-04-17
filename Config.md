@@ -58,7 +58,7 @@ Configurations can be read as different data types.
 
 ```ballerina
 //read a configuration as string
-string host1 = config:getAsString("host"); // this returns “” (i.e. empty string) if the configuration is not available
+string host = config:getAsString("host"); // this returns “” (i.e. empty string) if the configuration is not available
 
 //read a configuration as integer
 int port = config:getAsInt("port"); // this returns 0 if the configuration is not available
@@ -74,7 +74,7 @@ Configurations can be read while providing a default value as well. When a defau
 
 ```ballerina
 //read a configuration as string while setting a default value
-string host2  = config:getAsString("host", default = "localhost"); // this returns “localhost” if the configuration is not available
+string host  = config:getAsString("host", default = "localhost"); // this returns “localhost” if the configuration is not available
 ```
 
 If a developer wants to explicitly check if a configuration is available regardless of the default value, `contains()` function can be used.
