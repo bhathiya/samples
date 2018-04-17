@@ -22,7 +22,7 @@ ballerina run my-program.bal --config /path/to/conf/file/custom-config-file-name
 
 A sample config file looks as follows. Content should be in the TOML format. Note the structure where multiple configs can be grouped under one config, which is inside square brackets. 
 
-```
+```toml
  username.instances=john,peter
  [john]
  access.rights=RW
@@ -38,13 +38,12 @@ A sample config file looks as follows. Content should be in the TOML format. Not
 ballerina run my-program.bal -Busername.instances=john,peter -Bjohn.access.rights=RW -Bjohn.organization=wso2.org -Bpeter.access.rights=R -Bpeter.organization=ballerina.org
 ```
 
-Configurations can be set as environment variables as well. 
+Configurations can be set as environment variables as well. Here, dots should be replaced by underscores as dots are not allowed in environment variables.
 
 ```
-export server.hostname=server.abc.com
-export server.ports.http=80
-export server.ports.https=443
-
+export server_hostname=server.abc.com
+export server_ports_http=80
+export server_ports_https=443
 ```
 
 Configurations can be set programmatically as follows.
@@ -55,18 +54,51 @@ config:setConfig("john.country", "USA");
  
 ## Reading configurations
 
-There are 3 different ways of reading a configuration, and samples for each are given below.
+Configurations can be read as different data types.
+
+```ballerina
+//read a configuration as string
+string host1 = config:getAsString("host"); // this returns “” (i.e. empty string) if the configuration is not available
+
+//read a configuration as integer
+int port = config:getAsInt("port"); // this returns 0 if the configuration is not available
+
+
+//read a configuration as float
+float rate = config:getAsFloat("rate"); // this returns 0.0 if the configuration is not available
+
+//read a configuration as boolean
+boolean enabled = config:getAsBoolean("service.enabled"); // this returns ‘false’ if the configuration is not available
+```
+Configurations can be read while providing a default value as well. When a default value is provides, in case of configuration being not available, the default value is returned. 
+
+```ballerina
+//read a configuration as string while setting a default value
+string host2  = config:getAsString("host", default = "localhost"); // this returns “localhost” if the configuration is not available
+```
+
+If a developer wants to explicitly check if a configuration is available regardless of the default value, `contains()` function can be used.
 
 ```ballerina
 //check if configuration is available
-boolean configAvailable = config:contains("host");
+boolean configAvailable = config:contains("host"); 
+```
 
-//read a configuration
-string host1 = config:getAsString("host"); // this returns “” (i.e. empty string) if the configuration is not available
+A set of configurations can be read at once as a map. Assume the configuration file is like this.
 
-//read a configuration while setting a default value
-string host2  = config:getAsString("host", default = "localhost"); // this returns “localhost” if the configuration is not available
+```toml
+[servers]
 
-//read a configuration table as a map
-map userMap  = config:getTable("username.instances"); // here, the map’s key-value pairs represent config key-value pairs
+    [servers.alpha]
+    ip = "10.0.0.1"
+    dc = "eqdc10"
+
+    [servers.beta]
+    ip = "10.0.0.2"
+    dc = "eqdc10"
+```
+`[servers.alpha]` section can be read as a map at once like this. 
+
+//read a configuration section as a map
+map serverAlphaMap  = config:getAsMap("servers.alpha"); // here, the map’s key-value pairs represent config key-value pairs
 ```
