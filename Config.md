@@ -97,8 +97,10 @@ A set of configurations can be read at once as a map. Assume the configuration f
     ip = "10.0.0.2"
     dc = "eqdc10"
 ```
+
 `[servers.alpha]` section can be read as a map at once like this. 
 
+```ballerina
 //read a configuration section as a map
 map serverAlphaMap  = config:getAsMap("servers.alpha"); // here, the map’s key-value pairs represent config key-value pairs
 ```
