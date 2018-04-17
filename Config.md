@@ -63,7 +63,6 @@ string host = config:getAsString("host"); // this returns “” (i.e. empty str
 //read a configuration as integer
 int port = config:getAsInt("port"); // this returns 0 if the configuration is not available
 
-
 //read a configuration as float
 float rate = config:getAsFloat("rate"); // this returns 0.0 if the configuration is not available
 
